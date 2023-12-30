@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+<body>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+        <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="card">
+              <div class="profile-picture">
+                <img src="https://i.pinimg.com/736x/fc/84/25/fc8425fc6b742b6beb09c95e47710812.jpg" alt="Profile Picture">
+              </div>
+              <h2 class="name"><%=user.fullname %></h2>
+              <h3 class="username">@<%= user.username %></h3>
+              <p class="tagline">Keep going.</p>
+              <p class="description">be like a ram ji </p>
+              <a href="/logout" class="button">logout</a>
+              <a href="#" class="button">posts</a>
+            </div>
+        </div>
+      </body>
+</body>
+</html>
