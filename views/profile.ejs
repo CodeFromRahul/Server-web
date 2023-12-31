@@ -26,7 +26,10 @@
               <p class="tagline">Keep going.</p>
               <p class="description">be like a ram ji </p>
               <a href="/logout" class="button">logout</a>
-              <a href="#" class="button">posts</a>
+              <form action="/upload" method="post" enctype="multipart/form-data" >
+                <input type="file" name="file" >
+                <button type="submit">Upload Post</button>
+              </form>
             </div>
         </div>
       </body>

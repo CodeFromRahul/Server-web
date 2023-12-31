@@ -5,9 +5,10 @@ const postModel = require("./post");
 const { default: mongoose } = require('mongoose');
 const passport = require('passport');
 const localStrategy = require("passport-local");
-const { route } = require('../app');
+const { route, response } = require('../app');
 const { profile } = require('console');
 passport.use(new localStrategy(userModel.authenticate()));
+const upload = require("./multer")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -59,5 +60,11 @@ router.get("/profile",isLoggedIn, async function(req,res,next){
 router.get("/feed",isLoggedIn,function(req,res,next){
   res.render("feed");
 })
+router.post("/upload",upload.single("file"),function(req,res,next){
+  if(!req.file){
+  return res.status(404).send("no files were uploaded");}
+
+  res.send("File is uploaded successfully");
+});
 
 module.exports = router;
