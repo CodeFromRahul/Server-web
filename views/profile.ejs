@@ -27,10 +27,27 @@
               <p class="description">be like a ram ji </p>
               <a href="/logout" class="button">logout</a>
               <form action="/upload" method="post" enctype="multipart/form-data" >
+                <input type="text" name="filecaption" placeholder="some caption">
                 <input type="file" name="file" >
                 <button type="submit">Upload Post</button>
               </form>
             </div>
+        </div>
+
+        <div class="container">
+          <div class="cards">
+            <% user.posts.forEach(function(post){ %>
+              <div class="card" style="width:18rem;">
+                <img src="./public/images/uploads/<%= post.image %>" class="card-img-top"  alt="..." >
+                <div class="card-body">
+                  <h5 class="card-title"><%= post.imageText %></h5>
+                </div>
+              </div>
+              <%   }) %>
+   
+
+
+          </div>
         </div>
       </body>
 </body>

@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema({
-  postText: {
+  imgText: {
     type: String,
     required: true
+  },
+  image:{
+    type:String
   },
   user:{
    type : mongoose.Schema.Types.ObjectId,
