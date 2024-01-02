@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const userModel = require("./users")
-const postModel = require("./post");
+const postModel = require("./posts");
 const { default: mongoose } = require('mongoose');
 const passport = require('passport');
 const localStrategy = require("passport-local");
@@ -51,14 +51,7 @@ function isLoggedIn(req,res,next){
   res.redirect("/login");
 }
 
-router.get("/profile",isLoggedIn, async function(req,res,next){
-  let user = await userModel.findOne({
-    username : req.session.passport.user
-  })
-  .populate("posts");
-  console.log(user);
-  res.render("profile",{user})
-})
+
 router.get("/feed",isLoggedIn,function(req,res,next){
   res.render("feed");
 })
@@ -69,15 +62,25 @@ router.post("/upload",isLoggedIn,upload.single("file"), async function(req,res,n
 const user = await userModel.findOne({  username:req.session.passport.user});
 const post = await postModel.create({
   image: req.file.filename,
-  imgText: req.body.filecaption,
+  imageText: req.body.filecaption,
   user : user._id
 });
 
 user.posts.push(post._id);
 await user.save();
-res.send("done")
-res.send("File is uploaded successfully");
+// res.redirect('upload')
+res.redirect("/profile");
+// res.send("File is uploaded successfully");
 
 });
+
+router.get("/profile",isLoggedIn, async function(req,res,next){
+  let user = await userModel.findOne({
+    username : req.session.passport.user
+  })
+  .populate("posts");
+  console.log(user);
+  res.render("profile",{user})
+})
 
 module.exports = router;

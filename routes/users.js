@@ -14,7 +14,7 @@ const mongooseSchema = mongoose.Schema({
   },
   posts: [],
   dp: {
-    type: String
+    type: String,
   },
   email: {
     type: String,
